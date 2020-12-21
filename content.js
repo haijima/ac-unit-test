@@ -173,6 +173,8 @@ namespace AtCoder
 }
 
 function createPyUnittest(io) {
+  var title = location.pathname.split('/').slice(-1)[0].replace(/\_/g, '')
+  var contest = title.substr(0, 3)
   var text = 
 `import os
 import sys
@@ -182,7 +184,7 @@ import unittest
 
 def resolve():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    file = os.path.join(current_dir, '../../contests', 'abc/abc000a.py')
+    file = os.path.join(current_dir, '../../contests', '${contest}/${title}.py')
     with open(file, 'r', encoding='utf-8') as f:
         script = f.read()
         exec(script)
