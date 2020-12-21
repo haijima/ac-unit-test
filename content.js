@@ -174,9 +174,18 @@ namespace AtCoder
 
 function createPyUnittest(io) {
   var text = 
-`import sys
+`import os
+import sys
 from io import StringIO
 import unittest
+
+
+def resolve():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file = os.path.join(current_dir, '../../contests', 'abc/abc000a.py')
+    with open(file, 'r', encoding='utf-8') as f:
+        script = f.read()
+        exec(script)
 
 
 class TestClass(unittest.TestCase):
@@ -193,7 +202,7 @@ class TestClass(unittest.TestCase):
   
   for(var i = 0; i < io.length; i++){
     text += 
-`    def test_${io[i].name}(self):
+`    def test_${io[i].name.replace('入力例', 'input')}(self):
         input = """${io[i].input.trim("\n").replace(/\n/g, '\r\n')}"""
         output = """${io[i].output.trim("\n").replace(/\n/g, '\r\n')}"""
         self.assertIO(input, output)
