@@ -198,7 +198,7 @@ class TestClass(unittest.TestCase):
         sys.stdout.seek(0)
         out = sys.stdout.read()[:-1]
         sys.stdout, sys.stdin = stdout, stdin
-        self.assertEqual(out, output)
+        self.assertEqual(output, out)
 
 `;
   
