@@ -184,7 +184,7 @@ import unittest
 
 def resolve():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    file = os.path.join(current_dir, '../../contests', '${contest}/${title}.py')
+    file = os.path.join(current_dir, '../../../contests', '${contest}/${title.substr(0, title.length - 1)}/${title}.py')
     with open(file, 'r', encoding='utf-8') as f:
         script = f.read()
         exec(script)
